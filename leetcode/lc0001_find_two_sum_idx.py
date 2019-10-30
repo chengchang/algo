@@ -39,5 +39,6 @@ def two_sum_cached(nums: List[int],
 
 
 if __name__ == '__main__':
-    print(two_sum([2, 7, 11, 15], 9))
-    print(two_sum_cached([2, 7, 11, 15], 9))
+    fn1, fn2 = two_sum, two_sum_cached
+    assert fn1([2, 7, 11, 15], 9) == [0, 1]
+    assert fn2([2, 7, 11, 15], 9) == [0, 1]

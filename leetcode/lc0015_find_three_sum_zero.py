@@ -7,26 +7,28 @@ from typing import List
 
 
 # Time: O(n^2), Space: O(1)
-def three_sum_ij(nums: List[int]) -> List[List[int]]:
-    if not nums:
+def three_sum_ij(arr: List[int]) -> List[List[int]]:
+    if not arr:
         return []
 
-    nums.sort()
+    arr.sort()
 
     ret = []
-    k = len(nums) - 1
+    k = len(arr) - 1
     while k >= 2:
-        if nums[k] < 0:   # early stop if third < 0
+        # early stop if third < 0
+        if arr[k] < 0:
             break
 
         i, j = 0, k - 1
         while i < j:
-            cur = nums[i] + nums[j] + nums[k]
+            cur = arr[i] + arr[j] + arr[k]
+
             if cur == 0:
-                ret.append([nums[i], nums[j], nums[k]])
-                while i < j and nums[i + 1] == nums[i]:
+                ret.append([arr[i], arr[j], arr[k]])
+                while i < j and arr[i + 1] == arr[i]:
                     i += 1
-                while i < j and nums[j - 1] == nums[j]:
+                while i < j and arr[j - 1] == arr[j]:
                     j -= 1
                 i += 1
                 j -= 1
@@ -35,11 +37,12 @@ def three_sum_ij(nums: List[int]) -> List[List[int]]:
             else:
                 i += 1
 
-        while k >= 2 and nums[k - 1] == nums[k]:  # move
+        while k >= 2 and arr[k - 1] == arr[k]:  # move
             k -= 1
         k -= 1
     return ret
 
 
 if __name__ == '__main__':
-    print(three_sum_ij([-1, 0, 1, 2, -1, -4]))
+    ret = three_sum_ij([-1, 0, 1, 2, -1, -4])
+    assert ret == [[-1, -1, 2], [-1, 0, 1]]
