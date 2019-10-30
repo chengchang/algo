@@ -7,8 +7,8 @@ from typing import List
 
 
 # Time: O(n), Space: O(1)
-def two_sum_sorted(nums: List[int], target: int) \
-        -> List[int]:
+def two_sum_sorted(nums: List[int],
+                   target: int) -> List[int]:
     if not nums:
         return []
 
