@@ -63,7 +63,12 @@ def four_sum_ij(nums: List[int], target: int) \
                     i += 1
                 else:
                     j -= 1
+            while k >= 2 and nums[k - 1] == nums[k]:
+                k -= 1
             k -= 1
+
+        while p >= 2 and nums[p - 1] == nums[p]:
+            p -= 1
         p -= 1
 
     return ret

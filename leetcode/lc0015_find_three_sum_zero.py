@@ -16,6 +16,9 @@ def three_sum_ij(nums: List[int]) -> List[List[int]]:
     ret = []
     k = len(nums) - 1
     while k >= 2:
+        if nums[k] < 0:   # early stop if third < 0
+            break
+
         i, j = 0, k - 1
         while i < j:
             cur = nums[i] + nums[j] + nums[k]
@@ -24,13 +27,16 @@ def three_sum_ij(nums: List[int]) -> List[List[int]]:
                 while i < j and nums[i + 1] == nums[i]:
                     i += 1
                 while i < j and nums[j - 1] == nums[j]:
-                    j += 1
+                    j -= 1
                 i += 1
                 j -= 1
             elif cur > 0:
                 j -= 1
             else:
                 i += 1
+
+        while k >= 2 and nums[k - 1] == nums[k]:  # move
+            k -= 1
         k -= 1
     return ret
 
