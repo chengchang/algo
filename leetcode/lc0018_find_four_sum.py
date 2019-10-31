@@ -45,6 +45,7 @@ def four_sum_ij(arr: List[int], target: int) \
     while p >= 3:
         new_t = target - arr[p]
         k = p - 1
+        # 转化为3数和
         while k >= 2:
             i, j = 0, k - 1
             nk = arr[k]
@@ -53,6 +54,8 @@ def four_sum_ij(arr: List[int], target: int) \
                 cur = ni + nj + nk
                 if new_t == cur:
                     ret.append([arr[p], nk, nj, ni])
+
+                    # 同值跳
                     while i < j and arr[i + 1] == ni:
                         i += 1
                     while i < j and arr[j - 1] == nj:
@@ -63,10 +66,13 @@ def four_sum_ij(arr: List[int], target: int) \
                     i += 1
                 else:
                     j -= 1
+
+            # 同值跳
             while k >= 2 and arr[k - 1] == arr[k]:
                 k -= 1
             k -= 1
 
+        # 同值跳
         while p >= 2 and arr[p - 1] == arr[p]:
             p -= 1
         p -= 1
