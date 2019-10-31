@@ -1,5 +1,7 @@
 # coding: utf-8
 
+# from: https://leetcode-cn.com/problems/search-insert-position/
+# keys: binary_search
 
 from typing import List
 

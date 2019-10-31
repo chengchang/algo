@@ -1,5 +1,8 @@
 # coding: utf-8
 
+# from: https://leetcode-cn.com/problems/sqrtx/
+# keys: binary_search
+
 
 def sqrt_x(x: int) -> int:
     if x < 0:
