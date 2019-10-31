@@ -16,9 +16,9 @@ def find_min(nums: List[int]) -> int:
     while left < right:
         mid = (left + right) >> 1
         # 4, 5, 6, 7, 0, 1, 2
-        # l=0      m=3      r=6  -> b1 l=3
-        #          l=3      r=6  -> b2 r=4
-        #          lm r          -> b1 l=4
+        # l=0      m=3      r=6  -> b1 l=4
+        #             l=4   r=5  -> b2 r=5
+        #             lm r       -> b2 r=4
 
         # 找升序变化点
         if nums[mid] > nums[right]:
