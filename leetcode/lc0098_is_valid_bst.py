@@ -2,6 +2,7 @@
 # from: https://leetcode-cn.com/problems/validate-binary-search-tree/
 # keys: bst, recursion
 
+from typing import Union
 
 class TreeNode:
     def __init__(self, x):
@@ -37,6 +38,25 @@ def is_valid_bst(root: TreeNode) -> bool:
         is_valid_bst(root.right)
 
 
+def _is_valid_bst_bound(root: TreeNode,
+                        high: Union[TreeNode, None],
+                        low: Union[TreeNode, None]) -> bool:
+    if root is None:
+        return True
+
+    if low is not None and root.val >= low.val:
+        return False
+    if high is not None and root.val <= high.val:
+        return False
+
+    return _is_valid_bst_bound(root.left, low, root) and \
+        _is_valid_bst_bound(root.right, root, high)
+
+
+def is_valid_bst_bound(root: TreeNode) -> bool:
+    return _is_valid_bst_bound(root, None, None)
+
+
 def create_level_order(arr, root, i, n):
     if i < n:
         root = TreeNode(arr[i])
@@ -51,3 +71,4 @@ if __name__ == '__main__':
     root = None
     root = create_level_order(arr, root, 0, len(arr))
     assert is_valid_bst(root)
+    assert is_valid_bst_bound(root)
